@@ -13,6 +13,7 @@ class Student extends Model
         'id',
         'name',
         'email',
-        'city'
+        'city',
+        'calc'
     ];
 }

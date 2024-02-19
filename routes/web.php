@@ -20,4 +20,11 @@ Route::get('/', function () {
 
 
 Route::resource('student', StudentController::class);
-Route::get('student_export',[StudentController::class, 'get_student_data'])->name('student.export');
+Route::get('student_export',[StudentController::class, 'get_student_data'])
+    ->name('student.export');
+Route::post('/student_import',[StudentController::class,'put_student_data'])
+    ->name('student.import');
+Route::post('/put_fect_emit',[StudentController::class,'put_fect_emit'])
+    ->name('student.put_fect_emit');
+Route::post('/put_fect_rec',[StudentController::class,'put_fect_rec'])
+    ->name('student.put_fect_rec');

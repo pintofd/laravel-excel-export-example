@@ -3,29 +3,24 @@
 namespace App\Exports;
 
 use App\Models\Student;
-use Maatwebsite\Excel\Concerns\WithHeadings;
-use Maatwebsite\Excel\Concerns\FromCollection;
+use Illuminate\Contracts\View\View;
+use Maatwebsite\Excel\Concerns\FromView;
 
-class StudentExport implements FromCollection,WithHeadings
+class StudentExport implements FromView
 {
     /**
     * @return \Illuminate\Support\Collection
     */
 
-    public function headings():array{
-        return[
-            'Id',
-            'Name',
-            'Email',
-            'City',
-            'Created_at',
-            'Updated_at'
-
-        ];
+    public function __construct()
+    {
+        
     }
 
-    public function collection()
+    public function view(): View
     {
-        return Student::all();
+        return view('exports.student', [
+            'students' => Student::all()
+        ]);
     }
 }
